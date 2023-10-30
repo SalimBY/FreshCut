@@ -28,6 +28,9 @@
     "package.json": "^0.0.0",
     "packages.json": "^0.0.1-security",
     "path": "^0.12.7",
-    "route": "^0.2.5"
+    "route": "^0.2.5",
+    "node-mailjet": "^6.0.2",
+    "nodemailer": "^6.9.1",
+    "nodemailer-mailjet-transport": "^1.0.4",
   }
 }
