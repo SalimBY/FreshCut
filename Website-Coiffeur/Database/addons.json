@@ -1,0 +1,38 @@
+[
+    {
+        "id": 0,
+        "name": "None",
+        "price": "",
+        "img": ""
+    },
+    {
+        "id": 1,
+        "name": "Black Mask",
+        "price": "10$",
+        "img": "./img/black_mask.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Beard Tint",
+        "price": "10$",
+        "img": "./img/beard_tint.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Hair Wash & Shampoo",
+        "price": "5$",
+        "img": "./img/shampoo.jpeg"    
+    },    
+    {        
+        "id": 4,        
+        "name": "Facial Scrub & Steam",        
+        "price": "10$",        
+        "img": "./img/faceScrub.jpg"    
+    },    
+    {        
+        "id": 5,        
+        "name": "Facial Steam",        
+        "price": "5$",        
+        "img": "./img/steam.jpg"    
+    }
+]

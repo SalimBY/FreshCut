@@ -1,0 +1,13 @@
+<script src="js/connexion.js"></script>
+<form action="./connexion" method="post" id="formC">
+                          
+        <input type="email" class="form-control mb-3" placeholder="Email" aria-label="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+
+        <input type="password" class="form-control mb-3" placeholder="Password" aria-label="Password" name="password" required>
+        <br>
+        <div class="d-flex justify-content-center">
+          <button onclick="validateForm(event)" id="btn_connection" class="btn btn-primary" style="width: 150px;">Connexion</button>
+        </div><br>
+        <a  href="connexionAdmin" style="margin-left: 40%;"><u>Employés</u></a>
+
+</form>

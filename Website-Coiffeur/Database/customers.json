@@ -1,0 +1,13 @@
+[{
+  "_id": {
+    "$oid": "64138e54660c0900cc7164ad"
+  },
+  "username": "nuska",
+  "email": "aleksandrel@hotmail.com",
+  "phonenumber": "233-392-0330",
+  "password": "$2b$10$Svn46/zv1LGp7WYi9aTTU.BisdJXS4wNHsZIivcvxd/6H4T.GU3aK",
+  "client_id": 2,
+  "create_time": {
+    "$date": "2023-03-16T21:47:00.698Z"
+  }
+}]

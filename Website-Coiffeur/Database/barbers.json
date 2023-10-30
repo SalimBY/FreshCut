@@ -1,0 +1,143 @@
+[{
+  "_id": {
+    "$oid": "640f85111cc2676f3e5a19e0"
+  },
+  "barber_id": 2,
+  "name": "Wololoy",
+  "password": "$2b$10$Svn46/zv1LGp7WYi9aTTU.BisdJXS4wNHsZIivcvxd/6H4T.GU3aK",
+  "locations_location_id": 1,
+  "image_url": "./img/team/team-3.jpg",
+  "schedule": [
+    {
+      "day": "Monday",
+      "timeSlots": [
+        16,
+        17
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "timeSlots": [
+        9,
+        10,
+        11,
+        14,
+        13,
+        14
+      ]
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "640f85111cc2676f3e5a19e1"
+  },
+  "barber_id": 1,
+  "name": "Jean-Francois Brodeur",
+  "password": "$2b$10$Svn46/zv1LGp7WYi9aTTU.BisdJXS4wNHsZIivcvxd/6H4T.GU3aK",
+  "locations_location_id": 2,
+  "schedule": [
+    {
+      "day": "Monday",
+      "timeSlots": [
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "timeSlots": [
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "day": "Friday",
+      "timeSlots": [
+        9,
+        10,
+        11,
+        13,
+        14
+      ]
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "640f85111cc2676f3e5a19e2"
+  },
+  "barber_id": 3,
+  "name": "Jean-Martin",
+  "password": "$2b$10$Svn46/zv1LGp7WYi9aTTU.BisdJXS4wNHsZIivcvxd/6H4T.GU3aK",
+  "locations_location_id": 2,
+  "image_url": "./img/team/team-4.jpg",
+  "schedule": [
+    {
+      "day": "Tuesday",
+      "timeSlots": [
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "timeSlots": [
+        9,
+        10,
+        11,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "day": "Friday",
+      "timeSlots": [
+        9,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "646168d3221ee06fb18b2682"
+  },
+  "barber_id": 0,
+  "name": "FreshCut_Admin",
+  "password": "$2b$10$Svn46/zv1LGp7WYi9aTTU.BisdJXS4wNHsZIivcvxd/6H4T.GU3aK",
+  "locations_location_id": 1,
+  "image_url": "",
+  "schedule": [
+    {
+      "day": "Monday",
+      "timeSlots": [
+        9,
+        10,
+        11
+      ]
+    }
+  ]
+}]

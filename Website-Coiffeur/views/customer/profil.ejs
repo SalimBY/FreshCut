@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>FreshCut Barbershop</title>
+
+        <link href="/img/favicon.png" rel="icon">
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+            rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/boxicons.min.css" rel="stylesheet">
+        <!-- Template Main CSS File -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- =======================================================
+  * Template Name: Arsha - v4.10.0
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+    </head>
+
+    <body>
+
+        <%- include ('./header.ejs') %>
+
+            <main id="main">
+
+                <section id="profil" class="tarifs d-flex align-items-center justify-content-center">
+
+                    <div class="container py-5">
+                        <div class="row">
+                            <div class="col-lg-6 mx-auto">
+                                <div class="card mb-4 border-0">
+                                    <div class="card-body text-center ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                          </svg>
+
+                                        <h5 class="my-3"><%= data.customer.username%></h5>
+                                        <div class="d-flex justify-content-center mb-2">
+                                            <button type="button" class="btn btn-primary form-container-display" onclick="modifiyMode()">Modifier
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-square mb-1" viewBox="0 0 16 16">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                  </svg>
+                                            </button>
+                                        </div>
+                                        <div class="d-flex justify-content-center mb-2">
+                                            <button type="button" class="btn btn-primary form-container-input" onclick="save('/modifierProfil')" hidden>Save
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                                                    <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+                                                  </svg>
+                                            </button>
+                                        </div>
+                                        
+                                        <hr>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-sm-6 text-end">
+                                                <p class="mb-0">Username</p>
+                                            </div>
+                                            <div class="col-auto text-start form-container-display">
+                                                <p class="text-muted mb-0"><%= data.customer.username%></p>
+                                            </div>
+                                            <div class="col-auto text-start form-container-input" hidden>
+                                                <input type="text" class="form-control" id="input-box" placeholder="username" value="<%= data.customer.username%>" style="height: 38px;">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-sm-6 text-end">
+                                                <p class="mb-0">Email</p>
+                                            </div>
+                                            <div class="col-auto text-start form-container-display">
+                                                <p class="text-muted mb-0"><%= data.customer.email%></p>
+                                            </div>
+                                            <div class="col-auto text-start form-container-input" hidden>
+                                                <input type="text" class="form-control" id="input-box" placeholder="email" value="<%= data.customer.email%>" style="height: 38px; background-color: #1d1d1d !important; color: #424242 !important;" disabled>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-sm-6 text-end">
+                                                <p class="mb-0">Phone</p>
+                                            </div>
+                                            <div class="col-auto text-start form-container-display">
+                                                <p class="text-muted mb-0"><%= data.customer.phonenumber%></p>
+                                            </div>
+                                            <div class="col-auto text-start form-container-input" hidden>
+                                                <input type="text" class="form-control" id="input-box" placeholder="phone" value="<%= data.customer.phonenumber%>" style="height: 38px;">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row d-flex align-items-center">
+                                            
+                                            <div class="col-sm-6 text-end">
+                                                <p class="mb-0">Password</p>
+                                            </div>
+                                            <div class="col-auto text-start form-container-display">
+                                                <p class="text-muted mb-0">****</p>
+                                            </div>
+                                            <div class="col-auto text-start form-container-input" hidden>
+                                                <input type="text" class="form-control" id="input-box" placeholder="password" value="" style="height: 38px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+            </main><!-- End #main -->
+
+            <%- include ('./footer.ejs') %>
+
+                <!-- Template Main JS File -->
+                <script src="js/main.js"></script>
+                <script src="js/profil.js"></script>
+
+
+            </body>
+
+        </html>

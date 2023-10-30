@@ -1,0 +1,4 @@
+_id,barber_id,image_url,locations_location_id,name
+640f85111cc2676f3e5a19e0,2,./img/team/team-3.jpg,1,Wololoy
+640f85111cc2676f3e5a19e1,1,,2,Jean-Francois Brodeur
+640f85111cc2676f3e5a19e2,3,./img/team/team-4.jpg,2,Jean-Martin

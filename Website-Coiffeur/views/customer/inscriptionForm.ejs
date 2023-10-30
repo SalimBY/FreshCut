@@ -1,0 +1,17 @@
+<script src="js/inscription.js"></script>
+
+<form action="./inscription" method="post" id="formI">
+                                
+        <input type="email" class="form-control mb-3" placeholder="Email" aria-label="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+
+        <input type="text" class="form-control mb-3" placeholder="Username" aria-label="Username" name ="username" required>
+
+        <input type="tel" class="form-control mb-3" placeholder="Telephone" aria-label="Telephone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="dans le format suivant: XXX-XXX-XXXX" required>
+
+        <input type="password" class="form-control mb-3" placeholder="Password" aria-label="Password" name="password" required>
+
+        <div class="d-flex justify-content-center">
+            <button onclick="validateForm(event)" id="btn_inscription" type="submit" class="btn btn-primary" style="width: 150px;">S'inscrire</button>
+        </div>
+
+</form>

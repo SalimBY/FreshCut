@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <link href="/img/favicon.png" rel="icon">
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+            rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/boxicons.min.css" rel="stylesheet">
+        <!-- Template Main CSS File -->
+        <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Réservations - Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <style>
+            tbody tr:hover {
+                cursor: pointer;
+            }
+            </style>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+        <!-- =======================================================
+    * Template Name: SB Admin - v4.10.0
+    * Template URL: https://startbootstrap.com/template/sb-admin
+    * Author: StartBootstrap.com
+    * License: https://github.com/startbootstrap/startbootstrap-sb-admin/blob/master/LICENSE
+    ======================================================== -->
+
+    </head>
+
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="#"><h3 style="margin-top: 10px;"><i>FRESHCUT</i></h3></a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            </form>
+            <!-- Navbar-->
+            <%- include ('navbar.ejs') %>
+        </nav>
+        <div id="layoutSidenav">
+            <%- include ('menuSuperAdmin.ejs') %>
+            <%- include ('tableReservationBarber.ejs') %>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</html>

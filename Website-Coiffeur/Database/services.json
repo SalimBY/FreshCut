@@ -1,0 +1,33 @@
+[    
+    {
+         
+        "id": 1,
+        "name": "Haircut",
+        "price": "25$",
+        "img": "./img/haircut.jpg"
+    },    
+    {        
+        "id": 2,
+        "name": "Haircut & Beard",        
+        "price": "30$",        
+        "img": "./img/goofy2.jpg"    
+    },
+    {        
+        "id": 3,        
+        "name": "Beard",        
+        "price": "15$",        
+        "img": "./img/beard.jpg"
+    },    
+    {        
+        "id": 4,        
+        "name": "Line Up",        
+        "price": "10$",        
+        "img": "./img/lineup.jpg"     
+    },    
+    {       
+        "id": 5,        
+        "name": "Beard & Line Up",        
+        "price": "20$",        
+        "img": "./img/beardlineup.jpg"    
+    }
+]

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="/img/favicon.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/boxicons.min.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    
+    <title>Dashboard - Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    
+    <!-- =======================================================
+  * Template Name: SB Admin - v4.10.0
+  * Template URL: https://startbootstrap.com/template/sb-admin
+  * Author: StartBootstrap.com
+  * License: https://github.com/startbootstrap/startbootstrap-sb-admin/blob/master/LICENSE
+  ======================================================== -->
+
+</head>
+
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <!-- Navbar Brand-->
+      <a class="navbar-brand ps-3" href="#"><h3 style="margin-top: 10px;"><i>FRESHCUT</i></h3></a>
+      <!-- Sidebar Toggle-->
+      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+      </form>
+      <!-- Navbar-->
+      <%- include ('navbar.ejs') %>
+  </nav>
+  <div id="layoutSidenav">
+    <%- include ('menu.ejs') %>
+      <div id="layoutSidenav_content">
+        <main><br><br><br>
+            <div class="container">
+              <%- include ('modals.ejs') %>
+                <h1 class="logo me-auto" style="color: #708090">À l'horaire de <%= adminName %> </h1><br>
+                <table class="table table-striped table-hover rounded">
+                  <thead>
+                    <tr>
+                      <th class="col-md-6" style="font-size: 24px;">Jour</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% nameFr = {
+                      'Monday': 'Lundi',
+                      'Tuesday': 'Mardi',
+                      'Wednesday': 'Mercredi',
+                      'Thursday': 'Jeudi',
+                      'Friday': 'Vendredi',
+                      'Saturday': 'Samedi',
+                      'Sunday': 'Dimanche'
+                    } %>
+                    <% ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].forEach( day => { %>
+                      <tr>
+                        <td><%= nameFr[day] %></td>
+                        <% if (!schedule.some(schedule => schedule.day  === day)) { %>
+                          <td>Aucun quart</td>
+                        <% } else { %>
+                          <% const lundi = schedule.find(s => s.day === day).timeSlots %>
+                          <td>
+                            <% for (let i = 0; i < lundi.length; i++) { %>
+                              <span style="margin-right: 10px; border-width: 5px;"><a href="#" onclick="handleClick(event, '<%= lundi %>', '<%= day %>')" style="text-decoration: none;" data-toggle="modal" data-target="#mymodal"><%= lundi[i] %>h</a></span>
+                            <% } %>
+                          </td>
+                        <% } %>
+                        <td>
+                          <span style="margin-right: 10px; border-width: 5px;">
+                            <a href="#" onclick="ajouterHeure('<%= schedule.find(s => s.day === day) != undefined ? schedule.find(s => s.day === day).timeSlots : null  %>', '<%= locationSchedule %>', '<%= day %>')" style="text-decoration: none;" data-toggle="modal" data-target="#addHours">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                              </svg>
+                            </a>
+                          </span>
+                        </td>
+                      </tr>
+                    <% }) %>
+
+                    <!-- <tr>
+                      <td>Lundi</td>
+                      <% if (!schedule.some(schedule => schedule.day  === 'Monday')) { %>
+                        <td>Aucun quart</td>
+                      <% } else { %>
+                        <% const lundi = schedule.find(s => s.day === 'Monday').timeSlots %>
+                        <td>
+                          <% for (let i = 0; i < lundi.length; i++) { %>
+                            <span style="margin-right: 10px; border-width: 5px;"><a href="#" onclick="handleClick(event, '<%= lundi %>', 'Monday')" style="text-decoration: none;" data-toggle="modal" data-target="#mymodal"><%= lundi[i] %>h</a></span>
+                          <% } %>
+                        </td>
+                      <% } %>
+                    </tr>
+                    <tr>
+                      <td>Mardi</td>
+                      <% if (!schedule.some(schedule => schedule.day  === 'Tuesday')) { %>
+                        <td>Aucun quart</td>
+                      <% } else { %>
+                        <% const mardi = schedule.find(s => s.day === 'Tuesday').timeSlots %>
+                        <td>
+                          <% for (let i = 0; i < mardi.length; i++) { %>
+                            <span style="margin-right: 10px; border-width: 5px;"><a href="#" onclick="handleClick(event, '<%= mardi %>')" style="text-decoration: none;" data-toggle="modal" data-target="#mymodal"><%= mardi[i] %>h</a></span>
+                          <% } %>
+                        </td>
+                      <% } %>
+                    </tr>
+                    <tr>
+                      <td>Mercredi</td>
+                      <% if (!schedule.some(schedule => schedule.day  === 'Wednesday')) { %>
+                        <td>Aucun quart</td>
+                      <% } else { %>
+                        <% const mercredi = schedule.find(s => s.day === 'Wednesday').timeSlots %>
+                        <td>
+                          <% for (let i = 0; i < mercredi.length; i++) { %>
+                            <span style="margin-right: 10px; border-width: 5px;"><a href="#" onclick="handleClick(event, '<%= mercredi %>')" style="text-decoration: none;" data-toggle="modal" data-target="#mymodal"><%= mercredi[i] %>h</a></span>
+                          <% } %>
+                        </td>
+                      <% } %>
+                    </tr>
+                    <tr>
+                      <td>Jeudi</td>
+                      <% if (!schedule.some(schedule => schedule.day  === 'Thursday')) { %>
+                        <td>Aucun quart</td>
+                      <% } else { %>
+                        <% const jeudi = schedule.find(s => s.day === 'Thursday').timeSlots %>
+                        <td>
+                          <% for (let i = 0; i < jeudi.length; i++) { %>
+                            <span style="margin-right: 10px; border-width: 5px;"><a href="#" onclick="handleClick(event, '<%= jeudi %>')" style="text-decoration: none;" data-toggle="modal" data-target="#mymodal"><%= jeudi[i] %>h</a></span>
+                          <% } %>
+                        </td>
+                      <% } %>
+                    </tr>
+                    <tr>
+                      <td>Vendredi</td>
+                      <% if (!schedule.some(schedule => schedule.day  === 'Friday')) { %>
+                        <td>Aucun quart</td>
+                      <% } else { %>
+                        <% const vendredi = schedule.find(s => s.day === 'Friday').timeSlots %>
+                        <td>
+                          <% for (let i = 0; i < vendredi.length; i++) { %>
+                            <span style="margin-right: 10px; border-width: 5px;"><a href="#" onclick="handleClick(event, '<%= vendredi %>')" style="text-decoration: none;" data-toggle="modal" data-target="#mymodal"><%= vendredi[i] %>h</a></span>
+                          <% } %>
+                        </td>
+                      <% } %>
+                    </tr>
+                    <tr>
+                      <td>Samedi</td>
+                      <% if (!schedule.some(schedule => schedule.day  === 'Saturday')) { %>
+                        <td>Aucun quart</td>
+                      <% } else { %>
+                        <% const samedi = schedule.find(s => s.day === 'Saturday').timeSlots %>
+                        <% for (let i = 0; i < samedi.length; i++) { %>
+                          <span style="margin-right: 10px; border-width: 5px;"><a href="#" onclick="handleClick(event, '<%= samedi %>')" style="text-decoration: none;" data-toggle="modal" data-target="#mymodal"><%= samedi[i] %>h</a></span>
+                        <% } %>
+                      <% } %>
+                    </tr>
+                    <tr>
+                      <td>Dimanche</td>
+                      <% if (!schedule.some(schedule => schedule.day  === 'Sunday')) { %>
+                        <td>Aucun quart</td>
+                      <% } else { %>
+                        <% const samedi = schedule.find(s => s.day === 'Sunday').timeSlots %>
+                        <% for (let i = 0; i < samedi.length; i++) { %>
+                          <span style="margin-right: 10px; border-width: 5px;"><a href="#" onclick="handleClick(event, '<%= dimanche %>')" style="text-decoration: none;" data-toggle="modal" data-target="#mymodal"><%= samedi[i] %>h</a></a></span>
+                        <% } %>
+                      <% } %>
+                    </tr>
+                     -->
+                  </tbody>
+                </table>
+              </div>
+        </main>
+      </div>
+    </div>
+  </body>
+  <script src="js/horaire-affichage.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  
+   
+
+  </html>

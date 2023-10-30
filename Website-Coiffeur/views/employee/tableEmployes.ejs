@@ -1,0 +1,171 @@
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Liste des Barbers</h1>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Table des Barbers
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Barber_id</th>
+                                <th>Nom</th>
+                                <th>Location</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Barber_id</th>
+                                <th>Nom</th>
+                                <th>Location</th>
+                                <th>Delete</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% barbers.forEach(function(barber, i){ %>
+                                <tr>
+                                    <td><%= barber.id %></td>
+                                    <td><%= barber.name %></td>
+                                    <td><%= barber.location %></td>
+                                    <td><a onclick="confirmDelete('<%= barber.id %>')"><div style="text-align: center;">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </div></a>
+                                    </td>
+                                </tr>                                
+                            <% }); %>
+                        </tbody>                        
+                    </table>
+                    <div class="text-center">
+                        <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addBarberModal">Ajouter Barber</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; FreshCut 2023</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- Add Barber Modal -->
+<div class="modal fade" id="addBarberModal" tabindex="-1" aria-labelledby="addBarberModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addBarberModalLabel">Add Barber</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addBarberForm">
+            <div class="row mb-3">
+              <label for="name" class="col-sm-3 col-form-label">Name:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+            </div>
+           
+            <div class="row mb-3">
+              <label for="location" class="col-sm-3 col-form-label">Location:</label>
+              <div class="col-sm-9">
+                <div class="input-group">
+                  <select class="form-select" id="location-select" aria-label="Default select example">
+                    <% data.locations.forEach(location => {%>
+                      <% if(location.location_id != 0) { %>
+                        <option value=<%= location.location_id %>><%= location.information %></option>
+                      <% } %>
+                    <% }); %>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-sm-6 text-start">
+                    <p class="mb-0">Password:</p>
+                </div>
+                <div class="col-auto text-start form-container-input">
+                    <input type="password" class="form-control" id="input-box" placeholder="password" value="" style="height: 38px;">
+                </div>
+            </div>
+            
+
+            <div class="row mb-3">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-9">
+                <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <script>
+    // Handle form submission
+document.getElementById("addBarberForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const location_id = document.getElementById("location-select").value;
+  const password = document.getElementById("input-box").value;
+
+  // Make AJAX request to add barber
+  fetch("/addBarber", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, location_id, password })
+  })
+  .then(response => {
+    if (response.ok) {
+      // Reload the page to show the updated barbers list
+      location.reload();
+    } else {
+      alert("Failed to add barber. Please try again.");
+    }
+  })
+  .catch(error => {
+    console.error("Failed to add barber:", error);
+    alert("Failed to add barber. Please try again.");
+  });
+});
+
+
+    function confirmDelete(id_recieved) {
+        if (confirm("Are you sure you want to delete this user?")) {
+            fetch(`/DeleteBarber?id=${id_recieved}`, { 
+            method: 'POST', 
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({ id: id_recieved })
+            })
+
+                .then(response => {
+                    if (response.ok) {
+                        location.reload(); // reload the page to show updated reservations
+                    } else {
+                        alert("Failed to delete reservation. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Failed to delete reservation:", error);
+                    alert("Failed to delete reservation. Please try again.");
+                });
+        }
+    }
+    </script>
+    

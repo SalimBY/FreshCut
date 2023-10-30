@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "express-session": "^1.17.3",
+    "node-mailjet": "^6.0.2",
+    "nodemailer": "^6.9.1",
+    "nodemailer-mailjet-transport": "^1.0.4",
+    "package.json": "^0.0.0"
+  }
+}

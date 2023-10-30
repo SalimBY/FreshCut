@@ -1,0 +1,282 @@
+
+/**
+* Template Name: Arsha - v4.10.0
+* Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+html { overflow-y: scroll; }
+
+.list-group-item{
+  background-color: #272a2c;
+  color:white;
+  transition: 0.6s;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #47b2e4 rgba(0, 0, 0, 0);
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgba(221, 7, 7, 0);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #47b2e4;
+    border-radius: 100px;
+    border: 0px solid rgba(0, 0, 0, 0);
+  }
+  
+body {
+    font-family: "Open Sans", sans-serif;
+    color: white;
+    background-color: #3B3B3B;
+    overflow: overlay;
+  }
+  
+  a {
+    color: #47b2e4;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #73c5eb;
+    text-decoration: none;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Jost", sans-serif;
+  }
+  
+  /*--------------------------------------------------------------
+  # Header
+  --------------------------------------------------------------*/
+  #header {
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 15px 0;
+  }
+  
+  #header .logo {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 3px;
+  }
+  
+  #header .logo a {
+    color: white;
+  }
+
+  #header.header-scrolled,
+  #header.header-inner-pages {
+    background: #000000;
+  }
+  
+  /*--------------------------------------------------------------
+  # Navigation Menu
+  --------------------------------------------------------------*/
+  /**
+  * Desktop Navigation 
+  */
+  .navbar {
+    padding: 0;
+  }
+  
+  .navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+  }
+  
+  .navbar li {
+    position: relative;
+  }
+  
+  .navbar a,
+  .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px 10px 30px;
+    color: white;
+  }
+  
+  .navbar a:hover,
+  .navbar .active,
+  .navbar .active:focus,
+  .navbar li:hover>a {
+    color: #47b2e4;
+  }
+
+  
+  #home{
+    background: linear-gradient(rgba(0, 0, 0, 0.80), rgb(0, 0, 0)90%), url(/img/7621bb6087ee02d1c51a38663c88e6b0.jpg) center;
+    background-size: cover;
+  }
+  
+  /*--------------------------------------------------------------
+  # Sections General
+  --------------------------------------------------------------*/
+  section {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    overflow: hidden;
+  }
+  
+  /*--------------------------------------------------------------
+  # tarifs
+  --------------------------------------------------------------*/
+  
+  .list-group a {
+    height: 70px;
+  }
+  
+  .card-body{
+    background-color: #060707;
+    border-radius: 0;
+  }
+
+  #tarifs .list-group a {
+    height: 120px;
+    background-color: #000000;
+    border-color: rgb(32, 31, 31);
+    border-radius: 30px;
+  }
+  
+  /*--------------------------------------------------------------
+  # Why Us
+  --------------------------------------------------------------*/
+  
+  #contact, #tarifs {
+    background: black;
+    background-size: cover;
+  }
+  
+  #reservation, #connexion, #inscription, #profil{
+    background: linear-gradient(rgb(0, 0, 0)30%, rgb(0, 0, 0, 0.6)), url(/img/7621bb6087ee02d1c51a38663c88e6b0.jpg) center;
+    background-size: cover;
+  }
+  
+  /*--------------------------------------------------------------
+  # Footer
+  --------------------------------------------------------------*/
+  #footer {
+    font-size: 12px;
+    background: #37517e;
+  }
+
+  #footer .footer-bottom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+  }
+  
+  #footer .copyright {
+    float: left;
+  }
+  
+  #footer .credits {
+    float: right;
+  }
+
+
+*{
+	list-style: none;
+}
+
+.formParent{
+	width: 750px;
+	max-width: 60%;
+  background-color: #060707;
+	margin: 50px auto 0;
+	padding: 50px 0 50px 0;
+	border-radius: 15px;
+}
+
+.formulaire{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.progression ul li{
+	margin-right: 50px;
+	position: relative;
+}
+
+.progression ul li:last-child{
+	margin-right: 0;
+}
+
+.progression ul li div{
+	padding: 5px;
+}
+
+.progression ul li p{
+	width: 50px;
+	height: 50px;
+	background: #bebebe;
+	text-align: center;
+	line-height: 50px;
+	border-radius: 50%;
+}
+
+ .progression ul li.active p{
+	background: #575757;
+}
+
+ .buttons{
+	width: 350px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+ .buttons .common_btns button{
+	border: 0;
+	padding: 12px 15px;
+	background: #575757;
+	color: #fff;
+	width: 135px;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	border-radius: 3px;
+	transition: 0.5s ease;
+	cursor: pointer;
+}
+
+button.btn_next .icon,
+button.btn_back .icon{
+	display: flex;
+	margin-right: 10px;
+}
+
+button.btn_back:hover,
+button.btn_next:hover,
+button.btn_done:hover
+{
+	background: #8b8c8c;
+}
+
+input{
+  height: 68px;
+  background-color: #272a2c !important ;
+  border: none !important;
+  color: white !important;
+}

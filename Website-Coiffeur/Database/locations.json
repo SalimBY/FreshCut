@@ -1,0 +1,39 @@
+[{
+  "_id": {
+    "$oid": "640f87371cc2676f3e5a19ed"
+  },
+  "location_id": 1,
+  "address": "Pont-Viau",
+  "information": "Laval - 1234 Adresse",
+  "open_hour": {
+    "$timestamp": {
+      "t": 0,
+      "i": 9
+    }
+  },
+  "close_hour": {
+    "$timestamp": {
+      "t": 0,
+      "i": 17
+    }
+  }
+},{
+  "_id": {
+    "$oid": "640f87371cc2676f3e5a19ee"
+  },
+  "location_id": 2,
+  "address": "Montreal Nord",
+  "information": "Montreal - 4450 Adresse",
+  "open_hour": {
+    "$timestamp": {
+      "t": 0,
+      "i": 10
+    }
+  },
+  "close_hour": {
+    "$timestamp": {
+      "t": 0,
+      "i": 18
+    }
+  }
+}]

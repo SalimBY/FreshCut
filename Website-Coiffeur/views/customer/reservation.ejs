@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>FreshCut Barbershop</title>
+
+        <link href="/img/favicon.png" rel="icon">
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+            rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/boxicons.min.css" rel="stylesheet">
+        <!-- Template Main CSS File -->
+        <link href="css/style.css" rel="stylesheet">
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+        <!-- =======================================================
+  * Template Name: Arsha - v4.10.0
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+    </head>
+
+    <body>
+
+        <%- include ('./header.ejs') %>
+
+            <main id="main">
+
+                <section id="reservation" class="tarifs d-flex align-items-center justify-content-center">
+                    <div class="container mx-auto">
+
+                        <div class="section-title text-center mt-5">
+                            <h2>Réservation</h2>
+                        </div>
+
+                        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+                        <div class="formParent">
+
+                            <div class="progress" style="margin: 0 36% 0 36%; height: 5px;">
+                                <div class="progress-bar" role="progressbar" style="width: 0%; background-color:#47b2e4;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+
+                            <div class="form_steps" style="height: 500px; position: relative;">
+
+                                <% if(!data.isClientLoggedIn){ %>
+                                    <div class="row content mt-0 p-0 d-flex justify-content-center">
+                                        <div class="formulaire d-flex flex-column col-lg-7 pt-4 pt-lg-0">
+
+                                            <div class="list-group">
+                                                <div class="buttons_conn_inscr">
+                                                    
+                                                    <h3 class="text-center">Connexion</h3>
+
+                                                    <a href="/connexion"
+                                                        class="list-group-item list-group-item-action justify-content-between btn_connexion">
+                                                        <p class="mt-3 text-center">Connexion</p>
+                                                    </a>
+
+                                                    <a href="/inscription"
+                                                        class="list-group-item list-group-item-action justify-content-between btn_inscription">
+                                                        <p class="mt-3 text-center">Inscription</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="step form_1 data_info" style="display: none;">
+                                <% } else { %>
+                                    
+                                    <div class="step form_1 data_info">
+                                <% } %>
+
+                                    <form>
+                                        <div class="row content mt-0 p-0 d-flex justify-content-center">
+                                            <div class="formulaire d-flex flex-column col-lg-7 pt-4 pt-lg-0">
+        
+                                                <div class="list-group" style="overflow-y: scroll; max-height: 350px; border-radius: 2px;">
+                                                    <!-- <div class="reservations mb-3">
+                                                        <% data.reservations.forEach(reservation =>{ %>
+                                                            <a href="#"
+                                                                class="list-group-item list-group-item-action d-flex justify-content-between"
+                                                                data-id="Reservation <%= reservation.booking_id %>"
+                                                                onclick="loadReservation('<%= reservation.booking_id %>');addLocations()">
+                                                                    <p class="mt-3 col text-center"><%= reservation.datetime.split(" ")[0] %></p>
+                                                                    <p class="mt-3 col text-center"><%= reservation.datetime.split(" ").slice(1,3).join(" ") %></p>
+                                                                    <p class="mt-3 col text-center">ID: <%= reservation.booking_id %></p>
+                                                            </a>
+                                                            <button class="col btn btn-primary" style="max-width: 40px; max-height: 40px;">X</button>
+                                                        <% });%>
+                                                    </div> -->
+
+                                                    <div class="reservations mb-3">
+                                                        <% data.reservations.forEach(reservation =>{ %>
+
+                                                          <div class="d-flex justify-content-between mb-1 ">
+                                                            
+                                                            <a href="#"
+                                                                class="list-group-item list-group-item-action d-flex justify-content-between"
+                                                                data-id="Reservation <%= reservation.booking_id %>"
+                                                                onclick="loadReservation('<%= reservation.booking_id %>');addLocations()">
+                                                                    <p class="mt-3 col text-center"><%= reservation.datetime.split(" ")[0] %></p>
+                                                                    <p class="mt-3 col text-center"><%= reservation.datetime.split(" ").slice(1,3).join(" ") %></p>
+                                                            </a>
+
+                                                            <button class="col-auto btn btn-primary" style="min-width: 70px; max-height: 70px;border-radius: 2px;" onclick="delete_reservation(<%= reservation.booking_id %>)">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                                                </svg>
+                                                            </button>
+
+                                                        </div>
+
+                                                        <% });%>
+                                                        
+                                                    </div>
+                                                    
+                                                </div>
+        
+                                                <div class="d-flex justify-content-center mt-4">
+                                                    <button type="button" class="btn btn-primary btn_reservation" style="width: 250px;" onclick="clearReservation();addLocations()">Nouvelle réservation</button>
+                                                </div>
+    
+                                            </div>
+        
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="step form_2 data_info" style="display: none;">
+                                    <form>
+                                        <div class="row content mt-0 p-0 d-flex justify-content-center">
+                                            <div class="formulaire d-flex flex-column col-lg-7 pt-4 pt-lg-0">
+        
+                                                <h3 class="text-center">Location</h3>
+
+                                                <div class="list-group" id="locations_choice" style="overflow-y: scroll; max-height: 350px;">
+
+        
+                                                </div>
+        
+                                            </div>
+        
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="step form_3 data_info" style="display: none;">
+                                    <form>
+                                        <div class="row content mt-0 p-0 d-flex justify-content-center">
+                                            <div class="formulaire d-flex flex-column col-lg-7 pt-4 pt-lg-0">
+        
+                                                <h3 class="text-center">Barber</h3>
+        
+                                                <div class="list-group" id="barbers_choice" style="overflow-y: scroll; max-height: 350px;">
+
+
+                                                </div>
+        
+                                            </div>
+        
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="step form_4 data_info" style="display: none;">
+                                    <form>
+                                        <div class="row content mt-0 p-0 d-flex justify-content-center">
+                                            <div class="formulaire d-flex flex-column col-lg-7 pt-4 pt-lg-0">
+        
+                                                <h3 class="text-center">Service</h3>
+
+                                                <div class="list-group" id ="services_choice" style="overflow-y: scroll; max-height: 350px;">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="step form_5 data_info" style="display: none;">
+                                    <form>
+                                        <div class="row content mt-0 p-0 d-flex justify-content-center">
+                                            <div class="formulaire d-flex flex-column col-lg-7 pt-4 pt-lg-0">
+        
+                                                <h3 class="text-center">Add on</h3>
+
+
+                                                <div class="list-group" id="addons_choice" style="overflow-y: scroll; max-height: 350px;">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="step form_6 data_info" style="display: none;">
+                                    <form>
+                                        <div class="row content mt-0 p-0 d-flex justify-content-center">
+                                            <div class="formulaire d-flex flex-column col-lg-7 pt-4 pt-lg-0">
+        
+                                                <h3 class="text-center">Date</h3>
+
+                                                <div class="list-group" id="dates_choice" style="overflow-y: scroll; max-height: 350px;">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="step form_7 data_info" style="display: none;">
+                                    
+                                    <form>
+                                        <div class="row content mt-0 p-0 d-flex justify-content-center">
+                                            <div class="formulaire d-flex flex-column col-lg-7 pt-4 pt-lg-0">
+        
+                                                <h3 class="text-center">Heure</h3>
+
+                                                <div class="list-group" id="hours_choice"  style="overflow-y: scroll; max-height: 350px;">
+                                                    
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="step form_9 data_info" style="display: none;">
+                                    <form>
+                                        <div class="row content mt-0 p-0 d-flex justify-content-center">
+                                            <div class="formulaire d-flex flex-column col-lg-7 pt-4 pt-lg-0">
+        
+                                                <h3 class="text-center" style="font-size: larger;">Nous avons reçu votre réservation !</h3> <!-- <br><br>Un email de confirmation a été envoyé -->        
+                                            </div>
+        
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+
+                            <div class="buttons">
+                                <div class="common_btns form_btns d-flex justify-content-between">
+                                    <button type="button" class="btn_back" style="display:none;"><span class="icon"><ion-icon name="arrow-back-sharp"></ion-icon></span>Back</button>
+                                    <div></div>
+                                    <button type="button" class="btn_next" style="display:none;">Next&nbsp;&nbsp;<span class="icon"><ion-icon name="arrow-forward-sharp"></ion-icon></span></button>
+                                    <button type="button" class="btn_done" style="display:none;">Done</button>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </section>
+
+            </main><!-- End #main -->
+
+            <%- include ('./footer.ejs') %>
+
+                <!-- Template Main JS File -->
+                <script src="js/main.js"></script>
+                <script src="js/reservation.js"></script>
+                <script src="js/reservationLogic.js"></script>
+                
+                
+
+            </body>
+
+        </html>

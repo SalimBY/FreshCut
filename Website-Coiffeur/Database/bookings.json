@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "644aba49e29bc1571297eb17"
+  },
+  "locations_location_id": 1,
+  "barbers_barber_id": 2,
+  "service_chosen": 1,
+  "addon_chosen": 5,
+  "datetime": "Tuesday 11",
+  "booking_id": 1,
+  "customers_client_id": 1
+},
+{
+  "_id": {
+    "$oid": "644aba49e29bc1571297eb17"
+  },
+  "locations_location_id": 1,
+  "barbers_barber_id": 2,
+  "service_chosen": 1,
+  "addon_chosen": 5,
+  "datetime": "Tuesday 11",
+  "booking_id": 1,
+  "customers_client_id": 3
+}]

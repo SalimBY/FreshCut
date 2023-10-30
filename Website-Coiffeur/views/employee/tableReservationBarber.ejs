@@ -1,0 +1,95 @@
+<script>
+    function confirmDelete(id_recieved) {
+        if (confirm("Are you sure you want to delete this reservation?")) {
+            fetch(`/AnnuleReservation?id=${id_recieved}`, { 
+            method: 'POST', 
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({ id: id_recieved })
+            })
+
+                .then(response => {
+                    if (response.ok) {
+                        location.reload(); // reload the page to show updated reservations
+                    } else {
+                        alert("Failed to delete reservation. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Failed to delete reservation:", error);
+                    alert("Failed to delete reservation. Please try again.");
+                });
+        }
+    }
+    </script>
+    
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">Réservations</h1>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Table des réservations
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th>Service</th>
+                                <th>Addon</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Prix</th>
+                                <th>Barber</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Client</th>
+                                <th>Service</th>
+                                <th>Addon</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Prix</th>
+                                <th>Barber</th>
+                                <th>Delete</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% bookings.forEach(function(booking, i){ %>
+                                <tr>
+                                    <td><%= booking.client %></td>
+                                    <td><%= booking.service %></td>
+                                    <td><%= booking.addon %></td>
+                                    <td><%= booking.location %></td>
+                                    <td><%= booking.date %></td>
+                                    <td><%= booking.prix %></td>
+                                    <td><%= booking.barber %></td>
+                                    <td><a onclick="confirmDelete('<%= booking.id %>')"><div style="text-align: center;">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </div></a>
+                                    </td>
+                                </tr>                                
+                            <% }); %>
+                        </tbody>                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; FreshCut 2023</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
